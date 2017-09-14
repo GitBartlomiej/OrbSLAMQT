@@ -32,17 +32,11 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
                const bool bUseViewer):mSensor(sensor), mpViewer(static_cast<Viewer*>(NULL)), mbReset(false),mbActivateLocalizationMode(false),
         mbDeactivateLocalizationMode(false)
 {
-    // Output welcome message
-    cout << endl <<
-    "ORB-SLAM2 Copyright (C) 2014-2016 Raul Mur-Artal, University of Zaragoza." << endl <<
-    "This program comes with ABSOLUTELY NO WARRANTY;" << endl  <<
-    "This is free software, and you are welcome to redistribute it" << endl <<
-    "under certain conditions. See LICENSE.txt." << endl << endl;
 
-    cout << "Input sensor was set to: ";
+    cout << "Program jest konfigurowany dla kamery RGB z jednym obiektywem: ";
 
     if(mSensor==MONOCULAR)
-        cout << "Monocular" << endl;
+        cout << "Monokular" << endl;
     else if(mSensor==STEREO)
         cout << "Stereo" << endl;
     else if(mSensor==RGBD)
@@ -63,15 +57,15 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
      * 'open the file for reading'
      */
     cv::FileStorage fsSettings(strSettingsFile.c_str(), cv::FileStorage::READ);
+    //tu chyba jasne. Jeśli nie otworzy pliku to wywal błąd :)
     if(!fsSettings.isOpened())
     {
        cerr << "Failed to open settings file at: " << strSettingsFile << endl;
        exit(-1);
     }
 
-
-    //Load ORB Vocabulary
-    cout << endl << "Loading ORB Vocabulary. This could take a while..." << endl;
+    //Następuje ładowanie ORB_VOCABULARY
+    cout << endl << "Ładowanie ORB Vocabulary. To zazwyczaj zajmuje trochę czasu ..." << endl;
 
 
     mpVocabulary = new ORBVocabulary();

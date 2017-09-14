@@ -1,4 +1,5 @@
 ///home/bartlomiej/Praca/NowySlam/ORB_SLAM2/Vocabulary/ORBvoc.txt /home/bartlomiej/Praca/NowySlam/ORB_SLAM2/Examples/Monocular/TUM1.yaml /home/bartlomiej/Praca/SLAM/ORB_SLAM2/Examples/RGB-D/rgbd_dataset_freiburg1_xyz
+//Dobra komentarze będe robił po polsku. Doxygen po angielsku.
 
 #include<iostream>
 #include<algorithm>
@@ -21,18 +22,24 @@ void LoadImages(const string &strFile, vector<string> &vstrImageFilenames, vecto
 
 int main(int argc, char **argv)
 {
+
+    //Podawane są 4 argumenty podczas uruchamania programu.Są one wpisywane w konsoli. W Qt podwanae
+    //Jako domyślne argumenty
     if(argc != 4)
     {
         cerr << endl << "Usage: ./mono_tum path_to_vocabulary path_to_settings path_to_sequence" << endl;
         return 1;
     }
 
+    //To są wektoy wykorzystywane w przetwarzaniu pliku w którym są zapisane dane do zdjęć
+    //które są przetwarzane jako sekwencje/klatki(analiza poszczególnych obrazów) filmu.
+    vector<string> vstrImageFilenames;                              // nazwa danego zdjęcia
+    vector<double> vTimestamps;                                     // Tu zpisywany jest czas od klatki do klatki
     // Retrieve paths to images
-    vector<string> vstrImageFilenames;
-    vector<double> vTimestamps;
-    string strFile = string(argv[3])+"/rgb.txt";
-    LoadImages(strFile, vstrImageFilenames, vTimestamps);
+    string strFile = string(argv[3])+"/rgb.txt";                    //Tak naprawde analizowany jest plik .txt nie raw zdjecia rgb
+    LoadImages(strFile, vstrImageFilenames, vTimestamps);           //Zwykłe ładowanie do wektorów informacji z pliku :)
 
+    //Pobieranie liczby przetwarzanych zdjęć
     int nImages = vstrImageFilenames.size();
 
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
