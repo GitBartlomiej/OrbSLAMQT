@@ -33,7 +33,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
         mbDeactivateLocalizationMode(false)
 {
 
-    cout << "Program jest konfigurowany dla kamery RGB z jednym obiektywem: ";
+    cout << "Program jest konfigurowany dla kamery: ";
 
     if(mSensor==MONOCULAR)
         cout << "Monokular" << endl;
