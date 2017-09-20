@@ -153,11 +153,6 @@ private:
     std::thread* mptViewer;
 
     // Reset flag
-    /**
-     * ---------------------------------------------------------------------------------------------------
-     * More explanation words can be find in doc google drive/Uzupelnianie/zbior rzeczy ktorych nie umiem
-     * ---------------------------------------------------------------------------------------------------
-     */
     std::mutex mMutexReset;
     bool mbReset;
 

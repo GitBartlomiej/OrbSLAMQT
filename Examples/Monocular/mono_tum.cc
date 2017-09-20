@@ -42,8 +42,15 @@ int main(int argc, char **argv)
     //Pobieranie liczby przetwarzanych zdjęć
     int nImages = vstrImageFilenames.size();
 
-    // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
+/****************************************************************************************************/
+/*******************WEJSCIE DO SYSTEMU przetwarzanie obrazu tracking i maping************************/
+/****************************************************************************************************/
+/**/    // Create SLAM system. It initializes all system threads and gets ready to process frames./**/
+/**/    // Tu wchodzi do systemu zarządzajacego ()                                                /**/
+/**/    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);                /**/
+/****************************************************************************************************/
+/****************************************************************************************************/
+/****************************************************************************************************/
 
     // Vector for tracking time statistics
     vector<float> vTimesTrack;
