@@ -49,7 +49,7 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
     mpFrameDrawer(pFrameDrawer), mpMapDrawer(pMapDrawer), mpMap(pMap), mnLastRelocFrameId(0)
 {
     // Load camera parameters from settings file
-    //To są paramery odpowidzialne za ogniskową oraz przesuniecie ogniskkowej wobec obiektywu
+    //To są paramery odpowiedzialne za ogniskową oraz przesuniecie ogniskowej wobec obiektywu
     cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
     float fx = fSettings["Camera.fx"];
     float fy = fSettings["Camera.fy"];
@@ -112,10 +112,15 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
         cout << "- color order: BGR (ignored if grayscale)" << endl;
 
     // Load ORB parameters
-
+    // Liczba cech która ekstrachowana z pojedyńczego obrazu
     int nFeatures = fSettings["ORBextractor.nFeatures"];
+    //Skala kompresji pomiędzy poszczególnymi poziomami piramidy
     float fScaleFactor = fSettings["ORBextractor.scaleFactor"];
+    //Liczba poziomów w piramidzie
     int nLevels = fSettings["ORBextractor.nLevels"];
+    //Obraz jest dzielony przez kratownicę. Sprawdzana jest każda komórka. Jeżeli
+    //zostanie wybranych za mało cech z obrazu to to wtedy wymagane jest zeby było
+    //minimum fMinThFAST cech w obrazie
     int fIniThFAST = fSettings["ORBextractor.iniThFAST"];
     int fMinThFAST = fSettings["ORBextractor.minThFAST"];
 
