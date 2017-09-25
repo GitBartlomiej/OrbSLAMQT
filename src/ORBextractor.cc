@@ -412,16 +412,21 @@ ORBextractor::ORBextractor(int _nfeatures, float _scaleFactor, int _nlevels,
     nfeatures(_nfeatures), scaleFactor(_scaleFactor), nlevels(_nlevels),
     iniThFAST(_iniThFAST), minThFAST(_minThFAST)
 {
+    // Wew wektor wspołczynnik skalowania pomiędzy poziomami piramidy
     mvScaleFactor.resize(nlevels);
+    // Wew wektor (nie wiem co robi)
     mvLevelSigma2.resize(nlevels);
+    // Pierwsze wartości ustaw na 1.0f
     mvScaleFactor[0]=1.0f;
     mvLevelSigma2[0]=1.0f;
+    // Mnozenie przez przez skalę ()
     for(int i=1; i<nlevels; i++)
     {
         mvScaleFactor[i]=mvScaleFactor[i-1]*scaleFactor;
         mvLevelSigma2[i]=mvScaleFactor[i]*mvScaleFactor[i];
     }
 
+    // To sa odwrotnosci wektorów  mvScaleFactor oraz mvLevelSigma2
     mvInvScaleFactor.resize(nlevels);
     mvInvLevelSigma2.resize(nlevels);
     for(int i=0; i<nlevels; i++)
@@ -432,6 +437,7 @@ ORBextractor::ORBextractor(int _nfeatures, float _scaleFactor, int _nlevels,
 
     mvImagePyramid.resize(nlevels);
 
+    //COO TUU SIĘ DZIEJEEEEEEEEEEEEE
     mnFeaturesPerLevel.resize(nlevels);
     float factor = 1.0f / scaleFactor;
     float nDesiredFeaturesPerScale = nfeatures*(1 - factor)/(1 - (float)pow((double)factor, (double)nlevels));
